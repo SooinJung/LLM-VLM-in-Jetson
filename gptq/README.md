@@ -1,30 +1,40 @@
-# Llama 3.2 11B Vision 4bit 경량화 (GPTQ / NF4)
+# 한국어 VLM 4bit 경량화 for Jetson (Kanana NF4)
+
+**Kanana-1.5-v-3b-instruct**(카카오, 한국어 특화 VLM)를 NF4 4bit로 경량화해 **Jetson Orin Nano(8GB)** 적재를 노리는 프로젝트. 데스크톱(RTX 3080 Ti 12GB)에서 양자화·품질 검증을 완료했고, Jetson 이식이 다음 단계다.
 
 ## 핵심 결과 요약
 
-| 구성 | 한국어 PPL (Δ vs fp16) | K-DTCBench | Peak VRAM |
-|------|------------------------|-----------|-----------|
-| fp16 (원본) | 8.57 | 29.2% | ~22GB |
-| GPTQ 4bit (한국어 혼합 캘리브 70/30) | 9.14 (+6.6%) | 30.4% | ~11GB |
-| **NF4 전체 4bit (비전 포함)** | 9.23 (+7.7%) | 37.9% | **8.15GB** |
-| NF4 + lm_head 4bit + 타일2 | 9.33 (+8.9%) | 32.5% | **6.88GB** |
+Kanana-1.5-v-3b, 한국어 벤치마크 기준 (데스크톱 RTX 3080 Ti):
 
-- GPTQ 캘리브레이션은 **한국어/영어 혼합(70/30)** 데이터를 사용 — 캘리브 데이터의 언어 구성이 한국어 품질에 직접 영향을 줌
-- K-DTCBench(240문제) 점수는 전 구성이 랜덤(25%) 부근 노이즈 — 이 모델의 한국어 문서 이해 한계이며, 양자화로 인한 추가 손상은 없다는 것까지만 해석.
+| 구성 | K-DTCBench (240) | 한국어 PPL | 영어 PPL | weights | Peak VRAM |
+|------|------------------|-----------|----------|---------|-----------|
+| fp16 (원본) | 78.75% | 6.83 | 14.09 | 7.34GB | 8.18GB |
+| **NF4 전체 4bit** | **81.25%** | 7.14 (+4.5%) | 15.01 (+6.5%) | **2.66GB** | **3.59GB** |
 
-## NF4 전체 4bit 
+- **품질 손실 사실상 0** — NF4가 K-DTCBench에서 오히려 +2.5pp(노이즈 범위), PPL 열화도 한국어 +4.5%에 그침.
+- **peak VRAM 3.59GB** — Jetson 8GB에 KV캐시·활성값까지 넉넉히 들어가는 여유.
+- K-DTCBench 세부(NF4): document 91.3% / table 86.3% / chart 66.3%.
 
-GPTQ(GPTQModel)는 mllama에서 **텍스트 레이어만** 양자화할 수 있음
+## 왜 작은 한국어 모델인가 (11B 대조선)
 
-NF4(NormalFloat4)는 bitsandbytes 라이브러리의 4bit 포맷(QLoRA 논문에서 도입). 신경망 가중치가 대체로 정규분포를 따른다는 점을 이용해, 정규분포에 맞게 배치한 16개의 대표값으로 가중치를 반올림한다. GPTQ와의 핵심 차이 두 가지:
+이 프로젝트는 처음에 **Llama-3.2-11B-Vision**을 4bit로 압축해 Jetson에 올리려 했다. 그러나 두 벽에 막혔다:
 
-1. **캘리브레이션이 필요 없음** — GPTQ는 데이터를 흘려보내며 가중치를 보정하지만, NF4는 데이터 없이 즉석 변환. 그래서 캘리브 데이터의 언어 편향 문제 자체가 없음.
-2. **모델 전체에 적용됨** — 텍스트/비전 구분 없이 모든 Linear 레이어를 4bit로 적재할 수 있음.
+1. **크기** — GPTQ는 mllama에서 텍스트 레이어만 양자화해 비전 경로(~4.5GB)가 fp16으로 남아 ~11GB. NF4로 비전까지 4bit화해도 **8.15GB로 8GB를 초과**했다.
+2. **한국어 품질** — 애초에 11B의 K-DTCBench 점수가 30%대(4지선다 랜덤 25% 부근)로, 한국어 문서 이해 자체가 약했다. 양자화 손상이 아니라 모델의 한계.
 
-**어떻게 적용했나.** 별도 양자화 단계 없이, 모델 로드 시 `BitsAndBytesConfig`를 넘기면 끝이라고 함..:
+즉 "큰 미국 모델을 압축"하는 경로는 크기·품질 둘 다 미달이었다. 한국어 네이티브 3B인 Kanana에 **동일한 NF4 경량화 파이프라인**을 그대로 적용하자, 크기(3.59GB)와 한국어 품질(81%) 양쪽이 한 번에 해결됐다. 11B 실험은 "왜 작은 한국어 모델이어야 하는지"의 대조 데이터로 남는다.
+
+## NF4 4bit — 무엇이고 어떻게 적용했나
+
+**NF4란.** NF4(NormalFloat4)는 bitsandbytes 라이브러리의 4bit 포맷(QLoRA 논문에서 도입). 신경망 가중치가 대체로 정규분포를 따른다는 점을 이용해, 정규분포에 맞게 배치한 16개의 대표값으로 가중치를 반올림한다. 특징 두 가지:
+
+1. **캘리브레이션이 필요 없다** — 데이터 없이 로드 시 즉석 변환. 캘리브 데이터의 언어 편향 문제 자체가 없다.
+2. **모델 전체에 적용된다** — 텍스트/비전 구분 없이 모든 Linear 레이어를 4bit로 적재.
+
+**어떻게 적용했나.** 별도 양자화 단계 없이, 모델 로드 시 `BitsAndBytesConfig`를 넘기면 끝이다:
 
 ```python
-from transformers import BitsAndBytesConfig, MllamaForConditionalGeneration
+from transformers import AutoModelForVision2Seq, BitsAndBytesConfig
 
 bnb = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -32,83 +42,63 @@ bnb = BitsAndBytesConfig(
     bnb_4bit_compute_dtype=torch.bfloat16,
     bnb_4bit_use_double_quant=True,   # 양자화 상수까지 한 번 더 압축
 )
-model = MllamaForConditionalGeneration.from_pretrained(path, quantization_config=bnb, device_map="auto")
+model = AutoModelForVision2Seq.from_pretrained(
+    "kakaocorp/kanana-1.5-v-3b-instruct",
+    quantization_config=bnb, device_map="auto", trust_remote_code=True,
+)
 ```
 
-**결과.** 비전 인코더·cross-attn 포함 전체가 4bit로 적재되어 peak VRAM 11GB → **8.15GB**. 품질은 캘리브 없이도 GPTQ 한국어 캘리브와 동급(위 요약표). 여기에 lm_head 4bit와 타일 축소를 더해 **6.88GB**까지 확인(아래 표).
-
-## 추가 압축 실험 (NF4 기준)
-
-lm_head 4bit 양자화(`nf4_lmhead`)와 이미지 타일 수 축소(`--max-tiles`)를 조합한 결과 (K-DTCBench 정확도 / peak VRAM):
-
-| | 타일 4 (기본) | 타일 2 | 타일 1 |
-|---|---|---|---|
-| nf4 | 37.9% / 8.15GB | 35.0% / 7.66GB | 23.3% / 7.44GB |
-| nf4_lmhead | 35.0% / 7.37GB | **32.5% / 6.88GB** | 23.3% / 6.66GB |
-
-- **타일 1은 붕괴**(23.3%, 랜덤 이하) — 문서 읽기 불가, 채택 불가.
-- lm_head 4bit·타일 2는 각각 −2.9pt 수준으로 노이즈 범위 내 = 실질 무해. 속도 보너스 306s→224s.
-- **현실적 최선: `nf4_lmhead` + 타일 2 = 6.88GB.** 최대 압축(타일 1)도 6.66GB로 6.5GB 목표엔 미달 — 나머지 ~0.4GB는 KV캐시/활성값/경량 프루닝 몫.
-
+**결과.** 비전 인코더 포함 전체가 4bit로 적재되어 weights 7.34GB → **2.66GB**, peak VRAM 8.18GB → **3.59GB**. 품질은 위 요약표대로 fp16과 동급.
 
 ## 환경
 
 | 항목 | 값 |
 |------|-----|
 | GPU | NVIDIA RTX 3080 Ti, 12GB |
-| CUDA | 12.6 (드라이버 560.94) |
-| 시스템 RAM | 64GB (CPU 오프로드용) |
-| Python | **3.11 권장** (3.13은 gptqmodel/torch 휠 미지원 가능성) |
+| CUDA | 12.4 (torch 2.6.0+cu124) |
+| Python | 3.11 |
+| transformers | **4.51.3 고정** (Kanana remote-code가 요구; 신버전에선 forward가 깨짐) |
 
-> 12GB VRAM으로 11B fp16(~22GB)은 못 올리지만, GPTQModel이 레이어 단위로 양자화하며 나머지를 RAM으로 오프로드하므로 동작
+> Kanana는 `transformers==4.51.3` 기준 remote-code 모델이라 전용 venv(`kanana/.venv`)를 따로 둔다. 신버전 venv에선 토크나이저 디코드·비전 로터리 임베딩이 깨져 정상 출력이 안 나온다.
 
 ## 설치
 
 ```powershell
-# Python 3.11 가상환경 생성
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
+py -3.11 -m venv kanana\.venv
+kanana\.venv\Scripts\Activate.ps1
 
-# 나머지 먼저 → CUDA torch는 "맨 마지막"에 설치
-# (gptqmodel 7.x가 torch>=2.8 CPU 빌드를 끌어오므로, CUDA 빌드로 마지막에 덮어써야 함)
 pip install --upgrade pip
-pip install -r requirements.txt
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126 --force-reinstall
+pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
+pip install "transformers==4.51.3" accelerate einops timm datasets bitsandbytes pillow sentencepiece protobuf
+pip install "gradio>=5,<6" "huggingface-hub<1.0"   # 채팅 데모용
 ```
-
-> `pip install` 순서를 바꾸면 torch가 CPU 빌드로 덮여 `torch.cuda.is_available()==False`가 되니 주의.
-
-## 모델 접근 (필수)
-
-`meta-llama/Llama-3.2-11B-Vision-Instruct`는 **gated 모델**.
-
-1. https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct 에서 라이선스 승인
-2. HF 액세스 토큰 발급 후 `.env`에 설정 (`.env.example` 복사)
 
 ## 실행
 
-### 양자화 파이프라인 (GPTQ)
-
-```powershell
-python src/download_model.py     # 1. 원본 모델 다운로드
-python src/quantize.py           # 2. GPTQ 4비트 양자화 (한국어 혼합 캘리브)
-python src/evaluate.py           # 3. 전/후 비교
-```
-
-세부 설정은 `configs/gptq_config.yaml`. NF4는 별도 양자화 단계가 없다 — 평가 스크립트가 로드 시 즉석 양자화 진행
-
-### 평가
+NF4는 별도 양자화 단계가 없다 — 스크립트가 로드 시 즉석 양자화한다.
 
 ```powershell
 # K-DTCBench (한국어 문서/표/차트 VQA, 240문제)
-python src/eval_kdtcbench.py --model nf4_lmhead --max-tiles 2
-#   --model  fp16 | gptq | nf4 | nf4_lmhead
-#   --max-tiles N  이미지 타일 상한 축소 (기본 4)
-#   --prune-k K    Block Influence 순 self-attn K층 드롭 (실험용)
+python kanana\src\eval_kdtcbench.py --model nf4   # --model fp16 | nf4
 
 # Perplexity (영어/한국어)
-python src/eval_ppl.py --model nf4_lmhead
+python kanana\src\eval_ppl.py --model nf4
 ```
 
-결과는 `results/*.json`으로 저장.
+결과는 `kanana/results/*.json`으로 저장.
 
+### 채팅 데모
+
+경량화한 NF4 모델과 브라우저에서 바로 대화하는 로컬 UI:
+
+```powershell
+python kanana\src\chat_app.py
+```
+
+`http://127.0.0.1:7860`에서 이미지를 올리고 한국어로 질문 → 스트리밍 응답, 멀티턴 대화 지원.
+
+## 다음 단계 — Jetson 이식
+
+- NF4 3.59GB는 데스크톱 측정 근거선. 실 Jetson은 unified memory(CPU/GPU 공유 8GB)라 실기기에서 재측정 필요.
+- 확인 필요: bitsandbytes aarch64(Jetson) 지원 여부, `transformers==4.51.3` + Kanana remote-code의 aarch64 동작, 가중치 외 KV캐시/활성값 여유.
+- 채팅 데모(`chat_app.py`)를 그대로 이관하면 실기기에서 동일 UI로 시연 가능.

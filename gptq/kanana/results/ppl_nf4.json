@@ -1,0 +1,16 @@
+{
+  "model": "nf4",
+  "model_id": "kakaocorp/kanana-1.5-v-3b-instruct",
+  "en": {
+    "ppl": 15.012179374694824,
+    "tokens": 39897,
+    "windows": 39,
+    "seq_len": 1024
+  },
+  "ko": {
+    "ppl": 7.1393351554870605,
+    "tokens": 39897,
+    "windows": 39,
+    "seq_len": 1024
+  }
+}

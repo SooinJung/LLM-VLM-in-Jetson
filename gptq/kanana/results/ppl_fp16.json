@@ -1,0 +1,16 @@
+{
+  "model": "fp16",
+  "model_id": "kakaocorp/kanana-1.5-v-3b-instruct",
+  "en": {
+    "ppl": 14.087821006774902,
+    "tokens": 39897,
+    "windows": 39,
+    "seq_len": 1024
+  },
+  "ko": {
+    "ppl": 6.832533836364746,
+    "tokens": 39897,
+    "windows": 39,
+    "seq_len": 1024
+  }
+}

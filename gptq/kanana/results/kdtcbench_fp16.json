@@ -1,0 +1,29 @@
+{
+  "model": "fp16",
+  "model_id": "kakaocorp/kanana-1.5-v-3b-instruct",
+  "total_accuracy": 0.7875,
+  "total_correct": 189,
+  "total_n": 240,
+  "by_category": {
+    "document": {
+      "accuracy": 0.8875,
+      "correct": 71,
+      "total": 80,
+      "avg_latency_s": 0.447
+    },
+    "table": {
+      "accuracy": 0.85,
+      "correct": 68,
+      "total": 80,
+      "avg_latency_s": 0.533
+    },
+    "chart": {
+      "accuracy": 0.625,
+      "correct": 50,
+      "total": 80,
+      "avg_latency_s": 0.532
+    }
+  },
+  "peak_vram_gb": 8.18,
+  "elapsed_s": 134.6
+}
