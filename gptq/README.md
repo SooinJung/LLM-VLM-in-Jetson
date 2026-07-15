@@ -1,6 +1,6 @@
 # 한국어 VLM 4bit 경량화 for Jetson (Kanana NF4)
 
-**Kanana-1.5-v-3b-instruct**(카카오, 한국어 특화 VLM)를 NF4 4bit로 경량화해 **Jetson Orin Nano(8GB)** 적재를 노리는 프로젝트. 데스크톱(RTX 3080 Ti 12GB)에서 양자화·품질 검증을 완료했고, Jetson 이식이 다음 단계다.
+**Kanana-1.5-v-3b-instruct**(카카오, 한국어 특화 VLM)를 NF4 4bit로 경량화 진행해 보았따.
 
 ## 핵심 결과 요약
 
@@ -15,16 +15,7 @@ Kanana-1.5-v-3b, 한국어 벤치마크 기준 (데스크톱 RTX 3080 Ti):
 - **peak VRAM 3.59GB** — Jetson 8GB에 KV캐시·활성값까지 넉넉히 들어가는 여유.
 - K-DTCBench 세부(NF4): document 91.3% / table 86.3% / chart 66.3%.
 
-## 왜 작은 한국어 모델인가 (11B 대조선)
-
-이 프로젝트는 처음에 **Llama-3.2-11B-Vision**을 4bit로 압축해 Jetson에 올리려 했다. 그러나 두 벽에 막혔다:
-
-1. **크기** — GPTQ는 mllama에서 텍스트 레이어만 양자화해 비전 경로(~4.5GB)가 fp16으로 남아 ~11GB. NF4로 비전까지 4bit화해도 **8.15GB로 8GB를 초과**했다.
-2. **한국어 품질** — 애초에 11B의 K-DTCBench 점수가 30%대(4지선다 랜덤 25% 부근)로, 한국어 문서 이해 자체가 약했다. 양자화 손상이 아니라 모델의 한계.
-
-즉 "큰 미국 모델을 압축"하는 경로는 크기·품질 둘 다 미달이었다. 한국어 네이티브 3B인 Kanana에 **동일한 NF4 경량화 파이프라인**을 그대로 적용하자, 크기(3.59GB)와 한국어 품질(81%) 양쪽이 한 번에 해결됐다. 11B 실험은 "왜 작은 한국어 모델이어야 하는지"의 대조 데이터로 남는다.
-
-## NF4 4bit — 무엇이고 어떻게 적용했나
+## NF4 4bit 
 
 **NF4란.** NF4(NormalFloat4)는 bitsandbytes 라이브러리의 4bit 포맷(QLoRA 논문에서 도입). 신경망 가중치가 대체로 정규분포를 따른다는 점을 이용해, 정규분포에 맞게 배치한 16개의 대표값으로 가중치를 반올림한다. 특징 두 가지:
 
@@ -59,7 +50,7 @@ model = AutoModelForVision2Seq.from_pretrained(
 | Python | 3.11 |
 | transformers | **4.51.3 고정** (Kanana remote-code가 요구; 신버전에선 forward가 깨짐) |
 
-> Kanana는 `transformers==4.51.3` 기준 remote-code 모델이라 전용 venv(`kanana/.venv`)를 따로 둔다. 신버전 venv에선 토크나이저 디코드·비전 로터리 임베딩이 깨져 정상 출력이 안 나온다.
+> Kanana는 `transformers==4.51.3` 기준 remote-code 모델이라 전용 venv(`kanana/.venv`)를 따로 둔다. 신버전 venv에선 토크나이저 디코드·비전 로터리 임베딩이 깨져 정상 출력이 나오지 않음
 
 ## 설치
 
@@ -96,9 +87,3 @@ python kanana\src\chat_app.py
 ```
 
 `http://127.0.0.1:7860`에서 이미지를 올리고 한국어로 질문 → 스트리밍 응답, 멀티턴 대화 지원.
-
-## 다음 단계 — Jetson 이식
-
-- NF4 3.59GB는 데스크톱 측정 근거선. 실 Jetson은 unified memory(CPU/GPU 공유 8GB)라 실기기에서 재측정 필요.
-- 확인 필요: bitsandbytes aarch64(Jetson) 지원 여부, `transformers==4.51.3` + Kanana remote-code의 aarch64 동작, 가중치 외 KV캐시/활성값 여유.
-- 채팅 데모(`chat_app.py`)를 그대로 이관하면 실기기에서 동일 UI로 시연 가능.
