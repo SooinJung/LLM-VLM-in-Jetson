@@ -9,21 +9,1943 @@
       "accuracy": 0.8875,
       "correct": 71,
       "total": 80,
-      "avg_latency_s": 0.447
+      "avg_latency_s": 0.918
     },
     "table": {
       "accuracy": 0.85,
       "correct": 68,
       "total": 80,
-      "avg_latency_s": 0.533
+      "avg_latency_s": 1.661
     },
     "chart": {
       "accuracy": 0.625,
       "correct": 50,
       "total": 80,
-      "avg_latency_s": 0.532
+      "avg_latency_s": 1.304
     }
   },
   "peak_vram_gb": 8.18,
-  "elapsed_s": 134.6
+  "elapsed_s": 326.8,
+  "items": [
+    {
+      "idx": 0,
+      "category": "document",
+      "question": "보고서의 주요 내용이 아닌 것은 무엇인가요?",
+      "pred": "A",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 1,
+      "category": "document",
+      "question": "보고서에서 알려지지 않은 정보는 무엇인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 2,
+      "category": "document",
+      "question": "문서의 올바른 문서번호는 무엇인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 3,
+      "category": "document",
+      "question": "문서 안 정보를 바탕으로, 해당 제안서에 참여하지 않은 인물은 누구인가요?",
+      "pred": null,
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 4,
+      "category": "document",
+      "question": "이용자는 평일에 도서관을 몇 시간 이용할 수 있나요?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 5,
+      "category": "document",
+      "question": "도서관 안내데스크의 전화번호 뒷자리로 올바른 것은?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 6,
+      "category": "document",
+      "question": "계약서에서 보증금은 얼마입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 7,
+      "category": "document",
+      "question": "계약서에서 월 임대료는 얼마입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 8,
+      "category": "document",
+      "question": "여행 예약 확인서에서 호텔의 체크인 시간은 몇 시라고 표기되어 있습니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 9,
+      "category": "document",
+      "question": "여행 예약 확인서에서 여행의 출발일은 언제인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 10,
+      "category": "document",
+      "question": "주최사 직인은 문서의 어느 부분에 있습니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 11,
+      "category": "document",
+      "question": "해당 문서의 내용과 비교하였을때, 옳지 않은 선택지는 무엇인가요??",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 12,
+      "category": "document",
+      "question": "식물 재배 일지에 표기된 식물은 어느 것입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 13,
+      "category": "document",
+      "question": "식물 재배 일지에서 다음 작업은 무엇입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 14,
+      "category": "document",
+      "question": "환경 보호 활동 보고서에서 활동 기간은 총 몇 일로 작성되어 있나요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 15,
+      "category": "document",
+      "question": "다음 환경 보호 활동 보고서를 참고하였을때, 환경 보호 활동의 성과로 명시되지 않은 것은 무엇인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 16,
+      "category": "document",
+      "question": "환경 보고서에 표기된 조치 사항이 아닌 것은?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 17,
+      "category": "document",
+      "question": "환경 보고서의 승인자는 누구인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 18,
+      "category": "document",
+      "question": "환경영향평가에서 표기되어 있는 평가 항목이 아닌 것은?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 19,
+      "category": "document",
+      "question": "환경영향평가에서 대기에 대한 조치 사항으로 옳은 것은 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 20,
+      "category": "document",
+      "question": "보고서에서 하천 오염도를 어떻게 예상하고 있나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 21,
+      "category": "document",
+      "question": "보고서에서 미세먼지 농도를 어떻게 예상하고 있나요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 22,
+      "category": "document",
+      "question": "택배 발송 확인서에 표기되어 있는 물품명은 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 23,
+      "category": "document",
+      "question": "택배 발송 확인서에 표기되어 있는 물품의 중량은 어떻게 되나요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 24,
+      "category": "document",
+      "question": "서울시 공원을 이용할 수 있는 인원은 몇 명인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 25,
+      "category": "document",
+      "question": "서울시 공원의 이용 시 주의사항으로 명시되지 않은 것은?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 26,
+      "category": "document",
+      "question": "이 프로젝트는 언제 종료되었습니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 27,
+      "category": "document",
+      "question": "업무 보고서의 서명자는 누구인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 28,
+      "category": "document",
+      "question": "보고서에서 대기질에 대한 대책은 무엇입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 29,
+      "category": "document",
+      "question": "해당 보고서의 평가 항목이 아닌 것은 무엇인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 30,
+      "category": "document",
+      "question": "결재서의 제목은 무엇입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 31,
+      "category": "document",
+      "question": "결재서의 내용 중 허가 면적은 어떻게 되나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 32,
+      "category": "document",
+      "question": "누가 서울시 공원 이용 허가증에 서명을 하였습니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 33,
+      "category": "document",
+      "question": "서울시 공원 이용 허가증의 이용 목적은 무엇인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 34,
+      "category": "document",
+      "question": "직원 교육 이수 확인서의 확인자는 누구인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 35,
+      "category": "document",
+      "question": "직원 교육 이수 확인서의 확인날짜는 언제입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 36,
+      "category": "document",
+      "question": "김치찌개의 조리법은 몇 단계로 이루어져 있을까요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 37,
+      "category": "document",
+      "question": "김치찌개 레시피를 바탕으로, 들어가는 재료의 종류는 총 몇개인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 38,
+      "category": "document",
+      "question": "티켓에 표기된 좌석은 어디입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 39,
+      "category": "document",
+      "question": "이 티켓의 이름은 무엇인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 40,
+      "category": "document",
+      "question": "회사의 1년 총 매출액은 얼마인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 41,
+      "category": "document",
+      "question": "회사의 1년 총 순이익은 얼마인가요?",
+      "pred": null,
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 42,
+      "category": "document",
+      "question": "이 회원은 어떤 스포츠 종목을 등록 신청하였나요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 43,
+      "category": "document",
+      "question": "이 회원의 회원 유형은 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 44,
+      "category": "document",
+      "question": "이 행사는 언제 개최하나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 45,
+      "category": "document",
+      "question": "이 행사의 예산은 얼마인가요?",
+      "pred": "D",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 46,
+      "category": "document",
+      "question": "재활용률을 증대하기 위한 업무를 하는 부서는 무엇입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 47,
+      "category": "document",
+      "question": "환경 보호 계획 현황 문서에 있는 표의 속성이 아닌 것은?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 48,
+      "category": "document",
+      "question": "환자는 어떤 질병을 앓고 있나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 49,
+      "category": "document",
+      "question": "환자는 어떤 진료과에서 진료를 받았습니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 50,
+      "category": "document",
+      "question": "주간 운동 계획표에 따르면 토요일 오전에는 무슨 운동을 하나요?",
+      "pred": "B",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 51,
+      "category": "document",
+      "question": "주간 운동 계획 중 휴식을 하는 요일은 언제인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 52,
+      "category": "document",
+      "question": "임대주택은 서울특별시 어느 구에 위치하나요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 53,
+      "category": "document",
+      "question": "이 주택 임대차 계약서에서 임차인은 누구입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 54,
+      "category": "document",
+      "question": "여행 3일차에 진행하는 일정은 무엇인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 55,
+      "category": "document",
+      "question": "여행 준비물에 해당하지 않는 물품은 무엇인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 56,
+      "category": "document",
+      "question": "여행하는 인원은 총 몇 명인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 57,
+      "category": "document",
+      "question": "다음 여행 예약 확인서에 적힌 여행지는 어디인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 58,
+      "category": "document",
+      "question": "신청서에 표기된 축제 내용이 아닌 것은?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 59,
+      "category": "document",
+      "question": "축제가 개최되는 지역은 어디인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 60,
+      "category": "document",
+      "question": "급여 명세서에 표기된 연장근로수당은 얼마인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 61,
+      "category": "document",
+      "question": "다음 급여 명세서에서 기본급과 연장근로수당의 합은 얼마인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 62,
+      "category": "document",
+      "question": "동아리의 정기 모임은 무슨 요일에 진행하나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 63,
+      "category": "document",
+      "question": "동아리의 주요 활동 계획으로 해당되지 않는 활동은 무엇입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 64,
+      "category": "document",
+      "question": "점검항목-상태 중 결과보고서와 일치하지 않는 것은?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 65,
+      "category": "document",
+      "question": "다음 표에서 비고 칸이 작성되어 있는 점검항목은 무엇인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 66,
+      "category": "document",
+      "question": "환경 보호 활동을 통해 수거된 쓰레기의 무게는 얼마입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 67,
+      "category": "document",
+      "question": "환경 보호 활동에 참가하는 인원은 총 몇 명인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 68,
+      "category": "document",
+      "question": "신청자는 어떤 동물을 입양하길 희망하나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 69,
+      "category": "document",
+      "question": "신청자가 희망하는 입양 동물의 성별은 어떻게되나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 70,
+      "category": "document",
+      "question": "환경보호 캠페인 참가로 인해 몇 시간을 봉사활동 시간으로 인정받았나요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 71,
+      "category": "document",
+      "question": "환경보호 캠페인을 개최한 발행처는 어디입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 72,
+      "category": "document",
+      "question": "김철수의 중간고사 5개 과목 평균 점수는 얼마입니까?",
+      "pred": "A",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 73,
+      "category": "document",
+      "question": "기말고사에서 받은 5개 과목 점수 중 최솟값을 가지는 과목은?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 74,
+      "category": "document",
+      "question": "신청자는 어떤 도서를 대여 신청하였나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 75,
+      "category": "document",
+      "question": "신청자의 소속 부서는 어디인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 76,
+      "category": "document",
+      "question": "수업 참관 및 담임교사와의 면담은 총 몇 시간으로 진행되나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 77,
+      "category": "document",
+      "question": "수업 참관 시 참석을 원하는 학부모는 언제까지 담임교사에게 연락을 남겨야 하나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 78,
+      "category": "document",
+      "question": "문서에 작성된 공지사항이 아닌 것은 무엇인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 79,
+      "category": "document",
+      "question": "신년 계획 수립 워크샵이 진행되는 지역은 어디입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 80,
+      "category": "table",
+      "question": "인프라 구축 항목의 점수는 몇 점인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 81,
+      "category": "table",
+      "question": "환경 개선 항목에서 포함된 세부 항목은 무엇인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 82,
+      "category": "table",
+      "question": "2019년 보안 부문의 매출액은 얼마인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 83,
+      "category": "table",
+      "question": "하드웨어 부문의 구성비(전년도)는 몇 퍼센트입니까? 단, 소수점 셋째자리에서 반올림하세요.",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 84,
+      "category": "table",
+      "question": "C 기업의 매출액과 성장률은 각각 얼마인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 85,
+      "category": "table",
+      "question": "매출액이 가장 높은 기업은 무엇입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 86,
+      "category": "table",
+      "question": "KOSDAQ의 배당 수익률은 몇 퍼센트입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 87,
+      "category": "table",
+      "question": "KOSPI의 일평균 거래대금은 얼마입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 88,
+      "category": "table",
+      "question": "2021년 특허 출원 건수는 얼마인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 89,
+      "category": "table",
+      "question": "2020년과 2021년 R&D 투자액 증가분은 얼마입니까?",
+      "pred": "A",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 90,
+      "category": "table",
+      "question": "인사 평가 항목 중 가중치가 가장 높은 항목은 무엇인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 91,
+      "category": "table",
+      "question": "자기 개발 항목의 가중치는 몇 퍼센트입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 92,
+      "category": "table",
+      "question": "주거지역의 행정구역에 포함되지 않는 것은?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 93,
+      "category": "table",
+      "question": "공업지역의 인구 비율은 얼마입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 94,
+      "category": "table",
+      "question": "온라인 쇼핑몰에서 배송 속도의 만족도는 몇 점인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 95,
+      "category": "table",
+      "question": "오프라인 매장에서 웹사이트 사용의 만족도는 몇점인가요?",
+      "pred": "B",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 96,
+      "category": "table",
+      "question": "대학원 진학률이 가장 높은 학과는 어디입니까?",
+      "pred": "A",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 97,
+      "category": "table",
+      "question": "취업률이 가장 높은 학과는 무엇입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 98,
+      "category": "table",
+      "question": "2021년 10월의 KOSPI 지수는 얼마입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 99,
+      "category": "table",
+      "question": "2021년 9월 KOSPI 등락률은 몇 퍼센트입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 100,
+      "category": "table",
+      "question": "수시전형의 불합격자 수는 몇 명입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 101,
+      "category": "table",
+      "question": "전체 전형 중 불합격자의 비율은 몇 퍼센트입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 102,
+      "category": "table",
+      "question": "대학생들이 진로를 선택한 가장 큰 이유는 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 103,
+      "category": "table",
+      "question": "부모님 권유와 사회적 인정을 이유로 진로를 선택한 학생 수는 모두 몇 명입니까?",
+      "pred": "C",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 104,
+      "category": "table",
+      "question": "인천에서 자전거 이용률은 몇 퍼센트입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 105,
+      "category": "table",
+      "question": "서울에서 가장 많이 이용되는 교통 수단은 무엇입니까?",
+      "pred": "D",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 106,
+      "category": "table",
+      "question": "대중교통 이용률이 두 번째로 높은 해는 언제 입니까?",
+      "pred": "C",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 107,
+      "category": "table",
+      "question": "2021년에 자가용 이용률은 몇 퍼센트입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 108,
+      "category": "table",
+      "question": "데이터 관리는 어떤 방식으로 이루어집니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 109,
+      "category": "table",
+      "question": "건설 프로젝트 관리 시스템에서 사용하지 않는 도구는 무엇입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 110,
+      "category": "table",
+      "question": "2009년 산업 부문의 에너지 소비량은 몇 백만 TOE입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 111,
+      "category": "table",
+      "question": "2010년 가정 부문의 에너지 소비량은 몇 백만 TOE입니까?",
+      "pred": "C",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 112,
+      "category": "table",
+      "question": "2012년의 최고 기온은 얼마입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 113,
+      "category": "table",
+      "question": "2012년의 평균 기온은 얼마입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 114,
+      "category": "table",
+      "question": "대구 광역시의 스마트시티 계획은 어느 구역을 대상으로 하고 있습니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 115,
+      "category": "table",
+      "question": "광주광역시의 스마트시티 계획의 주요 특징은 무엇입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 116,
+      "category": "table",
+      "question": "영남권의 고용보험 가입자 지역별 비중은 몇 퍼센트입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 117,
+      "category": "table",
+      "question": "호남권의 근로자의 지역별 비중은 몇 퍼센트입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 118,
+      "category": "table",
+      "question": "사립학교법에서 학교법인과 교원임용에 관한 벌칙은 몇 조에 나와 있습니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 119,
+      "category": "table",
+      "question": "초중등교육법의 주요내용은 몇 조에 기술되어 있습니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 120,
+      "category": "table",
+      "question": "전체적으로 \"매우 그렇다\"고 응답한 비율이 가장 낮은 항목은 무엇인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 121,
+      "category": "table",
+      "question": "업무 환경에 대한 설문에서 평균 점수는 몇 점입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 122,
+      "category": "table",
+      "question": "2023년 지하철 요금은 1993년 지하철 요금의 몇 배인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 123,
+      "category": "table",
+      "question": "2023년 시내버스 요금은 얼마입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 124,
+      "category": "table",
+      "question": "가장 낮은 비율을 차지하는 전형 방법은 무엇인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 125,
+      "category": "table",
+      "question": "대학 입학 전형 방법 중 가장 높은 비율을 차지하는 것은 무엇입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 126,
+      "category": "table",
+      "question": "2021년에 반도체 수출액은 얼마인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 127,
+      "category": "table",
+      "question": "2015년에 수출액이 가장 적은 산업은 무엇인가요?",
+      "pred": "B",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 128,
+      "category": "table",
+      "question": "인구 성장률이 가장 높은 해는 언제인가요?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 129,
+      "category": "table",
+      "question": "2013년 출생아 수는 몇 명입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 130,
+      "category": "table",
+      "question": "연간 소득이 1천만 원 이하인 경우 소득세율은 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 131,
+      "category": "table",
+      "question": "연간 소득 4천만원에서 8천만원 구간의 소득세율은 몇 퍼센트입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 132,
+      "category": "table",
+      "question": "북미에서 주요 관광지로 언급된 장소는 어디인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 133,
+      "category": "table",
+      "question": "유럽의 주요 관광 시즌은 언제입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 134,
+      "category": "table",
+      "question": "소프트웨어 부문의 영업이익은 얼마인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 135,
+      "category": "table",
+      "question": "표에서 클라우드 부문의 기업 수는 몇 개입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 136,
+      "category": "table",
+      "question": "기업 B의 인재육성 전략은 무엇인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 137,
+      "category": "table",
+      "question": "기업 B의 인프라 구축 전략에는 무엇이 포함되어 있습니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 138,
+      "category": "table",
+      "question": "2020년에 태양광과 풍력 발전량의 합계는 몇 TWh인가요?",
+      "pred": "B",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 139,
+      "category": "table",
+      "question": "2021년 이후 바이오매스 발전량은 얼마인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 140,
+      "category": "table",
+      "question": "중소기업 지원 프로그램 개수가 가장 많은 해는 언제인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 141,
+      "category": "table",
+      "question": "2017년에 중소기업 지원 프로그램에 참여한 기업 수는 몇 개입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 142,
+      "category": "table",
+      "question": "대기환경보전법이 제정된 연도는 언제인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 143,
+      "category": "table",
+      "question": "1995년에 제정된 환경 관련 법은 무엇입니까?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 144,
+      "category": "table",
+      "question": "임대료 지수가 가장 높은 도시는 어디인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 145,
+      "category": "table",
+      "question": "도쿄의 임대료 지수는 얼마입니까?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 146,
+      "category": "table",
+      "question": "연간 변동률이 음수인 시장은 몇 개인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 147,
+      "category": "table",
+      "question": "일간 변동률이 가장 높은 지수는 무엇입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 148,
+      "category": "table",
+      "question": "국제 학술 컨퍼런스 지원 프로그램을 주관하는 기관은 어디인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 149,
+      "category": "table",
+      "question": "국제 학술 교류 프로그램 중 \"글로벌 연구자 교류 프로그램\"의 주관 기관은 어디입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 150,
+      "category": "table",
+      "question": "2021년의 이혼 건수는 몇 건이었나요?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 151,
+      "category": "table",
+      "question": "2020년 대한민국의 합계 출생률은 얼마입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 152,
+      "category": "table",
+      "question": "서울의 관광 수입은 얼마인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 153,
+      "category": "table",
+      "question": "제주도의 연간 방문객 수는 몇 명입니까?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 154,
+      "category": "table",
+      "question": "도시 재개발 프로젝트에서 \"보상협의 시작\"이 이루어진 날짜는 언제인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 155,
+      "category": "table",
+      "question": "2021년 2월 28일에 어떤 단계가 추진되나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 156,
+      "category": "table",
+      "question": "잔금이 증가한 이유는 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 157,
+      "category": "table",
+      "question": "부동산 중개수수료의 실제 비용은 예상 비용과 얼마나 차이가 나나요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 158,
+      "category": "table",
+      "question": "농업이 GDP에서 차지하는 비중이 가장 높은 나라는 어디인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 159,
+      "category": "table",
+      "question": "서비스업이 GDP에서 차지하는 비중이 두 번쨰로 낮은 나라는 어디인가요?",
+      "pred": "C",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 160,
+      "category": "chart",
+      "question": "직장인들이 퇴근 후 두 번째로 선호하는 활동은 무엇인가요?",
+      "pred": "B",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 161,
+      "category": "chart",
+      "question": "직장인들이 퇴근 후 가장 선호하지 않는 활동은 무엇인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 162,
+      "category": "chart",
+      "question": "30대에서 스마트폰 사용 시간이 증가하지 않았다고 응답한 비율은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 163,
+      "category": "chart",
+      "question": "스마트폰 사용 시간이 증가한 비율이 가장 높은 세대는 어디인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 164,
+      "category": "chart",
+      "question": "전기차 판매량이 가장 많이 증가한 해는 언제인가요?",
+      "pred": "A",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 165,
+      "category": "chart",
+      "question": "2019년 충전소 설치 수는 몇 개인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 166,
+      "category": "chart",
+      "question": "2015년 이후로 자동차 생산량이 감소한 나라는 어디인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 167,
+      "category": "chart",
+      "question": "2005년에 가장 낮은 자동차 생산량을 기록한 나라는 어디입니까?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 168,
+      "category": "chart",
+      "question": "온라인 쇼핑으로 인해 오프라인 매장 방문이 감소했다고 응답한 사람들은 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 169,
+      "category": "chart",
+      "question": "오프라인 매장 방문에 변화가 없다고 응답한 비율은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 170,
+      "category": "chart",
+      "question": "2022년에 대기업의 매출액은 얼마였나요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 171,
+      "category": "chart",
+      "question": "2020년과 2022년 중소기업의 매출액 차이는 얼마인가요?",
+      "pred": "A",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 172,
+      "category": "chart",
+      "question": "2010년에 비해 2015년의 온라인 쇼핑 이용률은 몇 퍼센트 증가했나요?",
+      "pred": null,
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 173,
+      "category": "chart",
+      "question": "2015년 한국의 온라인 쇼핑 이용률은 몇 퍼센트였나요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 174,
+      "category": "chart",
+      "question": "대학 입학 경쟁률이 가장 높았던 해는 언제인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 175,
+      "category": "chart",
+      "question": "시간이 지날수록 한국대학 입학 경쟁률은 어떻게 변하고 있나요?",
+      "pred": "C",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 176,
+      "category": "chart",
+      "question": "2018년에 대중교통 이용률은 몇 퍼센트였나요?",
+      "pred": "B",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 177,
+      "category": "chart",
+      "question": "2020년에 대중교통 이용률은 몇 퍼센트였나요?",
+      "pred": "C",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 178,
+      "category": "chart",
+      "question": "2023년 60세 이상 노인의 여가 활동 중 여행의 비율은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 179,
+      "category": "chart",
+      "question": "2023년 60세 이상 노인의 여가 활동 중 두 번째로 높은 비율을 차지한 것은 무엇인가요?",
+      "pred": "C",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 180,
+      "category": "chart",
+      "question": "2021년 30대~50대 인구 비율이 가장 많은 도시는 어디인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 181,
+      "category": "chart",
+      "question": "2021년 부산에서 30대 미만의 비율은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 182,
+      "category": "chart",
+      "question": "9급 공무원의 평균 연봉은 2급 공무원의 평균 연봉과 비교했을 때 얼마나 낮나요?",
+      "pred": "D",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 183,
+      "category": "chart",
+      "question": "2023년 1급 공무원의 평균 연봉은 얼마인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 184,
+      "category": "chart",
+      "question": "2020년 사회복지 예산은 얼마인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 185,
+      "category": "chart",
+      "question": "2018년과 2021년 사회복지 예산의 차이는 몇 조 원인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 186,
+      "category": "chart",
+      "question": "35-44세 연령대에서 인스타그램 사용률은 몇 퍼센트인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 187,
+      "category": "chart",
+      "question": "15-24세 연령대에서 가장 많이 사용하는 SNS 플랫폼은 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 188,
+      "category": "chart",
+      "question": "2018년 단독주택 건설 수는 몇 호인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 189,
+      "category": "chart",
+      "question": "2019년 서울시에서 아파트 건설 실적은 몇 호인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 190,
+      "category": "chart",
+      "question": "2023년에 30대가 가장 선호하는 운동은 무엇인가요?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 191,
+      "category": "chart",
+      "question": "2023년에 50대 이상에서 수영을 선호하는 비율은 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 192,
+      "category": "chart",
+      "question": "60대 이상의 주말 독서율은 몇 퍼센트인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 193,
+      "category": "chart",
+      "question": "주말 독서율이 가장 높은 연령대는 무엇인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 194,
+      "category": "chart",
+      "question": "2019년 강남구와 강북구의 전기차 충전소 설치 수 차이는 몇 개인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 195,
+      "category": "chart",
+      "question": "2021년 강남구의 전기차 충전소 설치 수는 몇 개인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 196,
+      "category": "chart",
+      "question": "스마트폰이 업무에 사용된 비율이 가장 낮은 분기는 언제인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 197,
+      "category": "chart",
+      "question": "2023년 3분기의 스마트폰 사용 시간 중 업무가 차지하는 비율은 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 198,
+      "category": "chart",
+      "question": "2024년에는 IoT 활용이 얼마나 증가할 것으로 보이나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 199,
+      "category": "chart",
+      "question": "2024년 디지털 전환(DX) 분야 중 빅데이터 분석의 추진 비율은 몇 퍼센트로 예상되나요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 200,
+      "category": "chart",
+      "question": "20대가 가장 선호하는 운동은 무엇인가요?",
+      "pred": "D",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 201,
+      "category": "chart",
+      "question": "30대와 40대에서 수영을 선호하는 비율은 몇 퍼센트 차이가 나나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 202,
+      "category": "chart",
+      "question": "남성과 여성 관광객 비율이 가장 차이가 많이 나는 계절은 무엇입니까?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 203,
+      "category": "chart",
+      "question": "2023년 겨울철 관광객 중 여성의 비율은 몇 퍼센트인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 204,
+      "category": "chart",
+      "question": "2020년과 2021년에 가장 선호된 노후 준비 방법은?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 205,
+      "category": "chart",
+      "question": "2021년 부동산으로 노후를 준비하는 비율은 몇 퍼센트인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 206,
+      "category": "chart",
+      "question": "평일과 주말 모두에서 가장 많은 학습 시간을 보내는 학년은 무엇인가요?",
+      "pred": "B",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 207,
+      "category": "chart",
+      "question": "모든 학력에 대해 비교했을때, 평균 학습 시간은 주말에 비해 평일이 항상 많습니까?",
+      "pred": "B",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 208,
+      "category": "chart",
+      "question": "대기 오염도 지수가 45인 도시는 어디인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 209,
+      "category": "chart",
+      "question": "대한민국 주요 도시 중 대기 오염도가 가장 높은 도시는 어디인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 210,
+      "category": "chart",
+      "question": "직장인들이 스트레스를 해소하는 가장 흔한 방법은 무엇인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 211,
+      "category": "chart",
+      "question": "요리를 통해 스트레스를 해소하는 직장인의 비율은 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 212,
+      "category": "chart",
+      "question": "주간 보호 서비스의 이용률은 단기 보호와 비교해 얼마나 높은가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 213,
+      "category": "chart",
+      "question": "2023년 노인 복지 서비스 중 가장 많이 이용된 서비스는 무엇인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 214,
+      "category": "chart",
+      "question": "2023년 직장인들의 점심 식사에서 가장 낮은 비율을 차지하는 형태는 무엇인가요?",
+      "pred": "B",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 215,
+      "category": "chart",
+      "question": "2023년 직장인들의 점심 식사에서 구내식당을 이용한 비율은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 216,
+      "category": "chart",
+      "question": "대학 비진학율이 가장 높은 해는 언제인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 217,
+      "category": "chart",
+      "question": "2019년 비진학률은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 218,
+      "category": "chart",
+      "question": "2023년에 금속 산업의 환경 친화도는 몇 퍼센트인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 219,
+      "category": "chart",
+      "question": "2023년 식품 산업과 에너지 산업의 환경 친화도 차이는 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 220,
+      "category": "chart",
+      "question": "2023년 취업률이 가장 낮은 연령대는 무엇입니까?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 221,
+      "category": "chart",
+      "question": "2023년 50대의 취업률은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 222,
+      "category": "chart",
+      "question": "대구에서 남성과 여성의 대학 진학률 차이는 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "A",
+      "correct": 1
+    },
+    {
+      "idx": 223,
+      "category": "chart",
+      "question": "2022년 인천에서 여학생의 대학 진학률은 몇 퍼센트인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 224,
+      "category": "chart",
+      "question": "2023년 40대 이상의 남성 이용률은 몇 퍼센트인가요?",
+      "pred": "D",
+      "answer": "D",
+      "correct": 1
+    },
+    {
+      "idx": 225,
+      "category": "chart",
+      "question": "2023년 30대 남성의 온라인 교육 플랫폼 이용률은 몇 퍼센트인가요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 226,
+      "category": "chart",
+      "question": "2020년 수출액이 제일 낮은 한국 산업은 무엇인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 227,
+      "category": "chart",
+      "question": "2021년 반도체 산업의 수출액은 몇 십억 달러였나요?",
+      "pred": "B",
+      "answer": "B",
+      "correct": 1
+    },
+    {
+      "idx": 228,
+      "category": "chart",
+      "question": "베이비부머 세대와 밀레니얼 세대 간에 승진 기회 부족으로 인한 스트레스 지수 차이는 몇 인가요?",
+      "pred": "A",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 229,
+      "category": "chart",
+      "question": "다음 중 베이비부머 세대와 밀레니얼 세대의 스트레스 지수가 가장 많이 차이가 나는 스트레스 요인은 무엇인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 230,
+      "category": "chart",
+      "question": "여성이 남성보다 2023년 온라인 뱅킹 사용률이 높은 연령대는 무엇입니까?",
+      "pred": "B",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 231,
+      "category": "chart",
+      "question": "온라인 뱅킹을 가장 많이 사용하는 연령대는 무엇인가요?",
+      "pred": null,
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 232,
+      "category": "chart",
+      "question": "2023년에 버스를 가장 많이 이용하는 도시는 어떤 도시인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 233,
+      "category": "chart",
+      "question": "부산에서 지하철을 이용한 비율은 몇 퍼센트인가요?",
+      "pred": "A",
+      "answer": "C",
+      "correct": 0
+    },
+    {
+      "idx": 234,
+      "category": "chart",
+      "question": "대학생들이 세 번째로 많이 선택한 전공 계열은 무엇인가요?",
+      "pred": "D",
+      "answer": "A",
+      "correct": 0
+    },
+    {
+      "idx": 235,
+      "category": "chart",
+      "question": "2023년 대학생 전공 선택에서 인문사회계열이 차지하는 비율은 몇 퍼센트인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 236,
+      "category": "chart",
+      "question": "연차를 전부 사용한 비율은 몇 퍼센트인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    },
+    {
+      "idx": 237,
+      "category": "chart",
+      "question": "직장인들이 가장 많이 사용하는 연차 사용 패턴은 무엇인가요?",
+      "pred": "C",
+      "answer": "B",
+      "correct": 0
+    },
+    {
+      "idx": 238,
+      "category": "chart",
+      "question": "2023년에 해외여행을 가장 선호하는 연령대는 무엇입니까?",
+      "pred": "B",
+      "answer": "D",
+      "correct": 0
+    },
+    {
+      "idx": 239,
+      "category": "chart",
+      "question": "2023년 20대의 국내여행 선호 비율은 몇 퍼센트인가요?",
+      "pred": "C",
+      "answer": "C",
+      "correct": 1
+    }
+  ]
 }

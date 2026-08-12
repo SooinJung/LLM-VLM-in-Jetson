@@ -119,6 +119,7 @@ def run_eval(model, processor, num_samples: int | None = None,
         torch.cuda.reset_peak_memory_stats()
 
     cats: dict[str, dict] = {}
+    items: list[dict] = []  # 문항별 예측 기록 (fp16 vs nf4 diff 용)
     total_correct, total_n = 0, 0
     t_start = time.time()
 
@@ -146,6 +147,8 @@ def run_eval(model, processor, num_samples: int | None = None,
         pred = _extract_answer(gen_text)
         correct = int(pred == row["answer"]) if pred else 0
 
+        items.append({"idx": i, "category": cat, "question": row["question"][:80],
+                      "pred": pred, "answer": row["answer"], "correct": correct})
         cats[cat]["correct"] += correct
         cats[cat]["total"] += 1
         cats[cat]["latency_sum"] += lat
@@ -175,6 +178,7 @@ def run_eval(model, processor, num_samples: int | None = None,
         "by_category": by_cat,
         "peak_vram_gb": round(peak_vram, 2),
         "elapsed_s": round(time.time() - t_start, 1),
+        "items": items,
     }
 
 
