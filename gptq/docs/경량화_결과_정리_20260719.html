@@ -1,0 +1,203 @@
+<meta charset="utf-8">
+<title>한국어 VLM 4bit 경량화 결과 정리</title>
+<style>
+  :root {
+    --page: #f9f9f7; --surface: #fcfcfb;
+    --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --border: rgba(11,11,11,.10);
+    --accent: #2a78d6; --accent-deep: #1c5cab; --good: #006300;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+    background: var(--page); color: var(--ink);
+    line-height: 1.6; padding: 32px 16px;
+  }
+  .poster { max-width: 860px; margin: 0 auto; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px 26px; margin-bottom: 14px;
+  }
+  header.card { border-top: 4px solid var(--accent); }
+  h1 { font-size: 25px; letter-spacing: -.3px; }
+  .sub { color: var(--ink-2); margin-top: 6px; font-size: 14px; }
+  .meta { color: var(--muted); font-size: 12.5px; margin-top: 10px; }
+  h2 { font-size: 15px; color: var(--accent-deep); margin-bottom: 12px; letter-spacing: .2px; }
+  h2 .no { color: var(--muted); font-weight: 600; margin-right: 6px; }
+
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .tile .label { font-size: 12.5px; color: var(--ink-2); }
+  .tile .value { font-size: 34px; font-weight: 700; letter-spacing: -.5px; margin: 2px 0; }
+  .tile .note { font-size: 12px; color: var(--muted); }
+  .tile .delta { color: var(--good); font-weight: 600; }
+
+  .journey { display: grid; grid-template-columns: 1fr 24px 1fr 24px 1fr; align-items: stretch; gap: 0; }
+  .step { border: 1px solid var(--grid); border-radius: 10px; padding: 12px 14px; font-size: 12.5px; color: var(--ink-2); }
+  .step b { display:block; color: var(--ink); font-size: 13px; margin-bottom: 4px; }
+  .step.final { border-color: var(--accent); background: #f2f7fd; }
+  .arrow { align-self: center; text-align: center; color: var(--muted); font-size: 16px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+  th { color: var(--ink-2); font-weight: 600; font-size: 12.5px; }
+  th:first-child, td:first-child { text-align: left; }
+  tr.hl td { background: #f2f7fd; font-weight: 600; }
+  td .up { color: var(--good); font-size: 12px; }
+  td .dim { color: var(--muted); font-size: 12px; font-weight: 400; }
+
+  .bars { margin-top: 6px; }
+  .barrow { display: grid; grid-template-columns: 150px 1fr 74px; align-items: center; gap: 10px; margin: 7px 0; font-size: 12.5px; }
+  .barrow .name { color: var(--ink-2); }
+  .track { background: transparent; height: 14px; position: relative; }
+  .fill { height: 14px; border-radius: 0 4px 4px 0; background: var(--grid); }
+  .fill.acc { background: var(--accent); }
+  .val { font-variant-numeric: tabular-nums; color: var(--ink); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .foot { font-size: 12.5px; color: var(--ink-2); }
+  .foot b { color: var(--ink); }
+  ul { padding-left: 18px; font-size: 13px; color: var(--ink-2); }
+  li { margin: 4px 0; }
+  li b { color: var(--ink); }
+
+  @media print {
+    body { padding: 0; background: #fff; }
+    .card, .tile { border-color: #ddd; break-inside: avoid; }
+    @page { size: A4 portrait; margin: 12mm; }
+  }
+</style>
+
+<div class="poster">
+
+  <header class="card">
+    <h1>한국어 VLM 4bit 경량화 — Jetson 8GB에서 돌아가기까지</h1>
+    <div class="sub">한국어 특화 모델 <b>Kanana-3B</b>를 4bit로 압축해, 품질은 그대로 두고 크기를 1/3로 줄였다. <b style="color:var(--good)">7/19 Jetson 실물 기기에서 구동 확인.</b></div>
+    <div class="meta">가짜연구소(Pseudo Lab) 프로젝트 · 작성: 정수인 · 2026-07-19</div>
+  </header>
+
+  <div class="tiles">
+    <div class="tile">
+      <div class="label">한국어 시험 점수 (K-DTCBench 240문항)</div>
+      <div class="value">81.25%</div>
+      <div class="note">원본 78.75% → 압축해도 <span class="delta">점수 그대로</span></div>
+    </div>
+    <div class="tile">
+      <div class="label">모델 크기</div>
+      <div class="value">2.66<span style="font-size:20px"> GB</span></div>
+      <div class="note">원본 7.34GB의 <span class="delta">약 1/3</span></div>
+    </div>
+    <div class="tile">
+      <div class="label">실행 메모리 — Jetson 실측</div>
+      <div class="value">2.86<span style="font-size:20px"> GB</span></div>
+      <div class="note">8GB 기기에서 <span class="delta">실물 구동 확인 ✅</span></div>
+    </div>
+  </div>
+
+  <section class="card">
+    <h2><span class="no">01</span>진행 과정 요약</h2>
+    <div class="journey">
+      <div class="step"><b>1차: 영어 11B 모델 압축</b>
+        Llama-3.2-11B를 4bit로 압축해 21GB → 11GB. 윈도우 환경 문제도 여럿 해결.</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>한계 발견</b>
+        이 모델은 한국어 시험에서 찍기 수준(25%대). 게다가 어떤 방법으로도 Jetson 8GB에 안 들어감.</div>
+      <div class="arrow">→</div>
+      <div class="step final"><b>방향 전환</b>
+        큰 영어 모델을 압축하는 대신, 한국어 전용 작은 모델(Kanana-3B)을 압축하기로.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="no">02</span>발견: 압축할 때 쓰는 데이터의 언어가 품질을 가른다</h2>
+    <div class="foot" style="margin-bottom:8px">
+      GPTQ 압축은 "보정용 데이터"를 쓰는데, 관례대로 <b>영어 데이터만 쓰면 한국어 실력만 나빠진다</b>.
+      한국어 데이터를 섞으니 손상이 1/3로 줄었다. (11B 실험, 숫자는 한국어 손상 정도 — 낮을수록 좋음)
+    </div>
+    <div class="bars">
+      <div class="barrow">
+        <div class="name">영어 데이터로만 보정</div>
+        <div class="track"><div class="fill" style="width:100%"></div></div>
+        <div class="val">+19.6%</div>
+      </div>
+      <div class="barrow">
+        <div class="name">한국어를 섞어 보정</div>
+        <div class="track"><div class="fill acc" style="width:34%"></div></div>
+        <div class="val"><b>+6.6%</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="no">03</span>최종 결과: 원본 vs 4bit 압축 (Kanana-3B)</h2>
+    <table>
+      <tr><th>구성</th><th>한국어 시험</th><th>한국어 손상</th><th>영어 손상</th><th>크기</th><th>실행 메모리</th></tr>
+      <tr><td>원본 (fp16)</td><td>78.75%</td><td>—</td><td>—</td><td>7.34GB</td><td>8.18GB</td></tr>
+      <tr class="hl"><td>압축 (NF4 4bit)</td><td>81.25% <span class="up">+2.5pp</span></td><td><span class="dim">+4.5%</span></td><td><span class="dim">+6.5%</span></td><td>2.66GB</td><td>3.59GB</td></tr>
+    </table>
+    <div class="cols" style="margin-top:14px">
+      <div>
+        <div class="foot" style="margin-bottom:4px"><b>메모리, 이만큼 줄었다</b></div>
+        <div class="bars">
+          <div class="barrow">
+            <div class="name">크기 — 원본</div>
+            <div class="track"><div class="fill" style="width:90%"></div></div>
+            <div class="val">7.34GB</div>
+          </div>
+          <div class="barrow">
+            <div class="name">크기 — 압축</div>
+            <div class="track"><div class="fill acc" style="width:33%"></div></div>
+            <div class="val"><b>2.66GB</b></div>
+          </div>
+          <div class="barrow">
+            <div class="name">실행 메모리 — 원본</div>
+            <div class="track"><div class="fill" style="width:100%"></div></div>
+            <div class="val">8.18GB</div>
+          </div>
+          <div class="barrow">
+            <div class="name">실행 메모리 — 압축</div>
+            <div class="track"><div class="fill acc" style="width:44%"></div></div>
+            <div class="val"><b>3.59GB</b></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="foot" style="margin-bottom:4px"><b>시험 유형별 점수 (압축 모델)</b></div>
+        <div class="bars">
+          <div class="barrow">
+            <div class="name">문서 읽기</div>
+            <div class="track"><div class="fill acc" style="width:91%"></div></div>
+            <div class="val">91.3%</div>
+          </div>
+          <div class="barrow">
+            <div class="name">표 읽기</div>
+            <div class="track"><div class="fill acc" style="width:86%"></div></div>
+            <div class="val">86.3%</div>
+          </div>
+          <div class="barrow">
+            <div class="name">차트 읽기</div>
+            <div class="track"><div class="fill acc" style="width:66%"></div></div>
+            <div class="val">66.3%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="no">04</span>왜 NF4 방식인가 &amp; 이후 계획</h2>
+    <div class="cols">
+      <ul>
+        <li><b>보정 데이터가 필요 없다</b> — 위 02의 언어 편향 문제가 아예 생기지 않음</li>
+        <li><b>모델 전체가 압축된다</b> — 11B에서 발목을 잡았던 이미지 처리 부분까지 전부 4bit</li>
+        <li><b>적용이 쉽다</b> — 설정 코드 3줄이면 끝</li>
+      </ul>
+      <ul>
+        <li><b>Jetson 실물 구동 확인 (7/19)</b> — 로드 45초 · 메모리 2.86GB · 한국어 질문에 정상 응답</li>
+        <li><b>다음 주 부스</b> — Jetson 실물로 채팅 데모 시연 (이미지 올리고 한국어로 대화)</li>
+        <li>장비: 데스크톱 RTX 3080 Ti · Jetson Orin Nano 8GB</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
